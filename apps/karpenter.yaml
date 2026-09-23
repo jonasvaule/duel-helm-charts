@@ -15,6 +15,7 @@ spec:
       values: |
         settings:
           clusterName: duel-dev
+          interruptionQueue: duel-dev-karpenter
         nodeSelector:
           duel.dev/pool: system
         replicas: 1
