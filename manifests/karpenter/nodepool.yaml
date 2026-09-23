@@ -18,7 +18,7 @@ spec:
           values: ["spot"]
         - key: node.kubernetes.io/instance-type
           operator: In
-          values: ["t4g.small", "t4g.medium", "t4g.large", "m7g.medium", "m7g.large"]
+          values: ["t4g.small", "t4g.medium", "t4g.large", "m7g.medium", "m7g.large", "m7g.xlarge", "m7g.2xlarge"]
       expireAfter: 24h
   limits:
     cpu: "16"
