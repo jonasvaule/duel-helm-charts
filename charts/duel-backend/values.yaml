@@ -1,6 +1,6 @@
 image:
   repository: 855726270642.dkr.ecr.eu-north-1.amazonaws.com/duel-backend
-  tag: c6da3a36b8feeeb411e200049ca5be59f121bf03 ## aws ecr describe-images --repository-name duel-backend --query 'imageDetails[].imageTags[0]'
+  tag: c4afaa8b39b092b812130625eb81e3bf14b7d57c ## aws ecr describe-images --repository-name duel-backend --query 'imageDetails[].imageTags[0]'
 resources:
   requests:
     cpu: 250m
