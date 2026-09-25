@@ -1,0 +1,9 @@
+image:
+  repository: 855726270642.dkr.ecr.eu-north-1.amazonaws.com/duel-frontend
+  tag: bootstrap # replaced by CI on the first build
+resources:
+  requests:
+    cpu: 10m
+    memory: 32Mi
+  limits:
+    memory: 64Mi
