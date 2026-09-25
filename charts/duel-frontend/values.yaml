@@ -1,6 +1,6 @@
 image:
   repository: 855726270642.dkr.ecr.eu-north-1.amazonaws.com/duel-frontend
-  tag: 3190f32ca9866da6c200820ed9f3c6f905c1ab76 # replaced by CI on the first build
+  tag: 6efa23e6daf57e094bbfade95b0a355c8edf030d # replaced by CI on the first build
 resources:
   requests:
     cpu: 10m
