@@ -20,7 +20,8 @@ spec:
         # Default is LoadBalancer, which would make the LBC create a second,
         # public NLB. Our Terraform NLB reaches Traefik via the TGB below.
         service:
-          type: ClusterIP
+          spec:
+            type: ClusterIP
         ports:
           websecure:
             expose:
