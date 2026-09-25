@@ -9,3 +9,4 @@ resources:
     memory: 768Mi
 seatSecret:
   key: duel/dev/seat-secret
+targetGroupName: duel-dev-backend
