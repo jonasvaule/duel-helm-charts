@@ -1,0 +1,25 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: duel-frontend
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "2"
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/jonasvaule/duel-helm-charts.git
+    targetRevision: main
+    path: charts/duel-frontend
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: duel
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+    managedNamespaceMetadata:
+      labels:
+        pod-security.kubernetes.io/enforce: restricted

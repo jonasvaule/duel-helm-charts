@@ -1,0 +1,48 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: traefik
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "1"
+spec:
+  project: default
+  source:
+    repoURL: https://traefik.github.io/charts
+    chart: traefik
+    targetRevision: 41.6.0
+    helm:
+      values: |
+        deployment:
+          replicas: 1
+        nodeSelector:
+          duel.dev/pool: system
+        # Default is LoadBalancer, which would make the LBC create a second,
+        # public NLB. Our Terraform NLB reaches Traefik via the TGB below.
+        service:
+          type: ClusterIP
+        ports:
+          websecure:
+            expose:
+              default: false # TLS ends at CloudFront
+        extraObjects:
+          - apiVersion: elbv2.k8s.aws/v1beta1
+            kind: TargetGroupBinding
+            metadata:
+              name: traefik
+            spec:
+              serviceRef:
+                name: traefik
+                port: 80
+              targetGroupName: duel-dev-ingress
+              targetType: ip
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: traefik
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+      - ServerSideApply=true
