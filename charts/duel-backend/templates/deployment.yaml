@@ -31,6 +31,9 @@ spec:
           envFrom:
             - secretRef:
                 name: {{ .Release.Name }}
+          env:
+            - name: LOGGING_STRUCTURED_FORMAT_CONSOLE
+              value: ecs
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
           startupProbe:
