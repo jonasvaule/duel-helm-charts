@@ -1,0 +1,13 @@
+image:
+  repository: 855726270642.dkr.ecr.eu-north-1.amazonaws.com/duel-backend
+  tag: 2449e82c0481a0f1aed077c511002026ce45c910 ## aws ecr describe-images --repository-name duel-backend --query 'imageDetails[].imageTags[0]'
+
+resources:
+  requests:
+    cpu: 250m
+    memory: 512Mi
+  limits:
+    memory: 768Mi
+
+seatSecret:
+  key: duel/dev/seat-secret
